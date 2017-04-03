@@ -1,1 +1,17 @@
-我就是
+--- layout: page description: "苏永成" --- {% for post in paginator.posts %}
+{{ post.title }}
+
+{% if post.subtitle %}
+{{ post.subtitle }}
+
+{% endif %}
+{{ post.content | strip_html | truncate:200 }}
+Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+
+{% endfor %} {% if paginator.total_pages > 1 %}
+{% if paginator.previous_page %}
+← Newer Posts
+{% endif %} {% if paginator.next_page %}
+Older Posts →
+{% endif %}
+{% endif %}
